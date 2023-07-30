@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-date_default_timezone_set('Asia/Dhaka');
+
 /*
 | -------------------------------------------------------------------
 | AUTO-LOADER
@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'email', 'session', 'form_validation','upload');
+$autoload['libraries'] = array('database','session', 'form_validation', 'datatables');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'form', 'security', 'html','language');
+$autoload['helper'] = array('url', 'file', 'e_helper');
 
 /*
 | -------------------------------------------------------------------
