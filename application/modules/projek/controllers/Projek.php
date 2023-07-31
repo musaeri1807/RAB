@@ -10,7 +10,7 @@ class Projek extends CI_Controller
         parent::__construct();
         require FCPATH . 'vendor/autoload.php';
         $this->load->model('Projek_model');
-        
+        $this->session->userdata('login');
         $this->load->library('form_validation');
     }
 
@@ -44,7 +44,8 @@ public function index()
                 );
 
                 $data['judul'] = 'Projek';
-
+                $data['Total'] =$this->db->query('SELECT sum(biaya) AS TotalBiaya FROM projek_rincian WHERE id_projek=1')->result_array();
+                // $data['Total']=$this->db->get('jabatan')->result_array();
                 $this->load->view('templates/header', $data);
                 $this->load->view('projek/projek_list', $data);
                 $this->load->view('templates/footer', $data);
@@ -99,21 +100,22 @@ $this->db->delete('projek', ['id_projek' => $id]);
                 $data = array(
                 'button' => 'Create',
                 'action' => site_url('projek/create_action'),
-	    'id_projek' => set_value('id_projek'),
-	    'nomor_projek' => set_value('nomor_projek'),
-	    'nama_projek' => set_value('nama_projek'),
-	    'proses_bisnis' => set_value('proses_bisnis'),
-	    'periode_projek' => set_value('periode_projek'),
-	    'jenis_projek' => set_value('jenis_projek'),
-	    'penguna_projek' => set_value('penguna_projek'),
-	    'tujuan_projek' => set_value('tujuan_projek'),
-	    'tanggal_lpj' => set_value('tanggal_lpj'),
-	    'target_projek' => set_value('target_projek'),
-	    'nilai_pengajuan' => set_value('nilai_pengajuan'),
-	    'status' => set_value('status'),
-	);
+                'id_projek' => set_value('id_projek'),
+                'nomor_projek' => set_value('nomor_projek'),
+                'nama_projek' => set_value('nama_projek'),
+                'proses_bisnis' => set_value('proses_bisnis'),
+                'periode_projek' => set_value('periode_projek'),
+                'jenis_projek' => set_value('jenis_projek'),
+                'penguna_projek' => set_value('penguna_projek'),
+                'tujuan_projek' => set_value('tujuan_projek'),
+                'tanggal_lpj' => set_value('tanggal_lpj'),
+                'target_projek' => set_value('target_projek'),
+                'nilai_pengajuan' => set_value('nilai_pengajuan'),
+                'status' => set_value('status'),
+            );
 
                 $data['judul'] = 'Tambah Projek';
+                $data['jabatan']=$this->db->get('jabatan')->result_array();
                 $this->load->view('templates/header', $data);
                 $this->load->view('projek/projek_form', $data);
                 $this->load->view('templates/footer', $data);
@@ -127,18 +129,18 @@ $this->db->delete('projek', ['id_projek' => $id]);
                     $this->create();
                     } else {
                         $data = array(
-		'nomor_projek' => $this->input->post('nomor_projek',TRUE),
-		'nama_projek' => $this->input->post('nama_projek',TRUE),
-		'proses_bisnis' => $this->input->post('proses_bisnis',TRUE),
-		'periode_projek' => $this->input->post('periode_projek',TRUE),
-		'jenis_projek' => $this->input->post('jenis_projek',TRUE),
-		'penguna_projek' => $this->input->post('penguna_projek',TRUE),
-		'tujuan_projek' => $this->input->post('tujuan_projek',TRUE),
-		'tanggal_lpj' => $this->input->post('tanggal_lpj',TRUE),
-		'target_projek' => $this->input->post('target_projek',TRUE),
-		'nilai_pengajuan' => $this->input->post('nilai_pengajuan',TRUE),
-		'status' => $this->input->post('status',TRUE),
-	    );
+                        'nomor_projek' => $this->input->post('nomor_projek',TRUE),
+                        'nama_projek' => $this->input->post('nama_projek',TRUE),
+                        'proses_bisnis' => $this->input->post('proses_bisnis',TRUE),
+                        'periode_projek' => $this->input->post('periode_projek',TRUE),
+                        'jenis_projek' => $this->input->post('jenis_projek',TRUE),
+                        'penguna_projek' => $this->input->post('penguna_projek',TRUE),
+                        'tujuan_projek' => $this->input->post('tujuan_projek',TRUE),
+                        'tanggal_lpj' => $this->input->post('tanggal_lpj',TRUE),
+                        'target_projek' => $this->input->post('target_projek',TRUE),
+                        'nilai_pengajuan' => $this->input->post('nilai_pengajuan',TRUE),
+                        'status' => $this->input->post('status',TRUE),
+                        );
 
                         $this->Projek_model->insert($data);
                         $this->session->set_flashdata('success', 'Ditambah');
@@ -156,22 +158,22 @@ $this->db->delete('projek', ['id_projek' => $id]);
                         $data = array(
                         'button' => 'Update',
                         'action' => site_url('projek/update_action'),
-		'id_projek' => set_value('id_projek', $row->id_projek),
-		'nomor_projek' => set_value('nomor_projek', $row->nomor_projek),
-		'nama_projek' => set_value('nama_projek', $row->nama_projek),
-		'proses_bisnis' => set_value('proses_bisnis', $row->proses_bisnis),
-		'periode_projek' => set_value('periode_projek', $row->periode_projek),
-		'jenis_projek' => set_value('jenis_projek', $row->jenis_projek),
-		'penguna_projek' => set_value('penguna_projek', $row->penguna_projek),
-		'tujuan_projek' => set_value('tujuan_projek', $row->tujuan_projek),
-		'tanggal_lpj' => set_value('tanggal_lpj', $row->tanggal_lpj),
-		'target_projek' => set_value('target_projek', $row->target_projek),
-		'nilai_pengajuan' => set_value('nilai_pengajuan', $row->nilai_pengajuan),
-		'status' => set_value('status', $row->status),
-	    );
+                        'id_projek' => set_value('id_projek', $row->id_projek),
+                        'nomor_projek' => set_value('nomor_projek', $row->nomor_projek),
+                        'nama_projek' => set_value('nama_projek', $row->nama_projek),
+                        'proses_bisnis' => set_value('proses_bisnis', $row->proses_bisnis),
+                        'periode_projek' => set_value('periode_projek', $row->periode_projek),
+                        'jenis_projek' => set_value('jenis_projek', $row->jenis_projek),
+                        'penguna_projek' => set_value('penguna_projek', $row->penguna_projek),
+                        'tujuan_projek' => set_value('tujuan_projek', $row->tujuan_projek),
+                        'tanggal_lpj' => set_value('tanggal_lpj', $row->tanggal_lpj),
+                        'target_projek' => set_value('target_projek', $row->target_projek),
+                        'nilai_pengajuan' => set_value('nilai_pengajuan', $row->nilai_pengajuan),
+                        'status' => set_value('status', $row->status),
+                        );
 
                         $data['judul'] = 'Ubah Projek';
-$this->load->view('templates/header', $data);
+                        $this->load->view('templates/header', $data);
                         $this->load->view('projek/projek_form', $data);
                         $this->load->view('templates/footer', $data);
 
@@ -189,18 +191,18 @@ $this->load->view('templates/header', $data);
                             $this->update($this->input->post('id_projek', TRUE));
                             } else {
                                 $data = array(
-		'nomor_projek' => $this->input->post('nomor_projek',TRUE),
-		'nama_projek' => $this->input->post('nama_projek',TRUE),
-		'proses_bisnis' => $this->input->post('proses_bisnis',TRUE),
-		'periode_projek' => $this->input->post('periode_projek',TRUE),
-		'jenis_projek' => $this->input->post('jenis_projek',TRUE),
-		'penguna_projek' => $this->input->post('penguna_projek',TRUE),
-		'tujuan_projek' => $this->input->post('tujuan_projek',TRUE),
-		'tanggal_lpj' => $this->input->post('tanggal_lpj',TRUE),
-		'target_projek' => $this->input->post('target_projek',TRUE),
-		'nilai_pengajuan' => $this->input->post('nilai_pengajuan',TRUE),
-		'status' => $this->input->post('status',TRUE),
-	    );
+                                'nomor_projek' => $this->input->post('nomor_projek',TRUE),
+                                'nama_projek' => $this->input->post('nama_projek',TRUE),
+                                'proses_bisnis' => $this->input->post('proses_bisnis',TRUE),
+                                'periode_projek' => $this->input->post('periode_projek',TRUE),
+                                'jenis_projek' => $this->input->post('jenis_projek',TRUE),
+                                'penguna_projek' => $this->input->post('penguna_projek',TRUE),
+                                'tujuan_projek' => $this->input->post('tujuan_projek',TRUE),
+                                'tanggal_lpj' => $this->input->post('tanggal_lpj',TRUE),
+                                'target_projek' => $this->input->post('target_projek',TRUE),
+                                'nilai_pengajuan' => $this->input->post('nilai_pengajuan',TRUE),
+                                'status' => $this->input->post('status',TRUE),
+                                );
 
                                 $this->Projek_model->update($this->input->post('id_projek', TRUE), $data);
                                 $this->session->set_flashdata('success', 'Diubah');

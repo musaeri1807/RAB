@@ -27,7 +27,7 @@ $this->db->order_by($this->id, $this->order);
     function get_by_id($id)
     {
         $this->db->select('*, ');
-$this->db->where($this->id, $id);
+        $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
     

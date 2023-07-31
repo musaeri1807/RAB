@@ -30,12 +30,18 @@
                                         </div>
 	    <div class="form-group <?php if(form_error('proses_bisnis')) echo 'has-error'?> ">
                                             <label for="proses_bisnis">Proses Bisnis</label>
-                                            <input type="text" class="form-control" name="proses_bisnis" id="proses_bisnis" placeholder="Proses Bisnis" value="<?php echo $proses_bisnis; ?>" />
+                                            <select name="proses_bisnis" id="proses_bisnis" class="form-control">
+                                                    <option value="">--Pilih Jabatan--</option>
+                                                    <?php foreach ($jabatan as $row): ?>
+                                                    <option value="<?php echo $row['id_jabatan'] ?>" <?php echo set_value('id_jabatan') == $row['id_jabatan'] ? 'selected' : '' ?>><?php echo $row['nama_jabatan'] ?></option>
+                                                    <?php endforeach ?>
+                                            </select>
+                                            <!-- <input type="text" class="form-control" name="proses_bisnis" id="proses_bisnis" placeholder="Proses Bisnis" value="<?php echo $proses_bisnis; ?>" /> -->
                                             <?php echo form_error('proses_bisnis', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('periode_projek')) echo 'has-error'?> ">
                                             <label for="periode_projek">Periode Projek</label>
-                                            <input type="text" class="form-control" name="periode_projek" id="periode_projek" placeholder="Periode Projek" value="<?php echo $periode_projek; ?>" />
+                                            <input type="date" class="form-control" name="periode_projek" id="periode_projek" placeholder="Periode Projek" value="<?php echo $periode_projek; ?>" />
                                             <?php echo form_error('periode_projek', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('jenis_projek')) echo 'has-error'?> ">
@@ -44,8 +50,8 @@
                                             <?php echo form_error('jenis_projek', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('penguna_projek')) echo 'has-error'?> ">
-                                            <label for="penguna_projek">Penguna Projek</label>
-                                            <input type="text" class="form-control" name="penguna_projek" id="penguna_projek" placeholder="Penguna Projek" value="<?php echo $penguna_projek; ?>" />
+                                            <!-- <label for="penguna_projek">Penguna Projek </label> -->
+                                            <input type="hidden" class="form-control" name="penguna_projek" id="penguna_projek" placeholder="Penguna Projek" value="<?php echo $this->session->userdata('login'); ?>" />
                                             <?php echo form_error('penguna_projek', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('tujuan_projek')) echo 'has-error'?> ">
@@ -55,12 +61,12 @@
                                         </div>
 	    <div class="form-group <?php if(form_error('tanggal_lpj')) echo 'has-error'?> ">
                                             <label for="tanggal_lpj">Tanggal Lpj</label>
-                                            <input type="text" class="form-control" name="tanggal_lpj" id="tanggal_lpj" placeholder="Tanggal Lpj" value="<?php echo $tanggal_lpj; ?>" />
+                                            <input type="date" class="form-control" name="tanggal_lpj" id="tanggal_lpj" placeholder="Tanggal Lpj" value="<?php echo $tanggal_lpj; ?>" />
                                             <?php echo form_error('tanggal_lpj', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('target_projek')) echo 'has-error'?> ">
                                             <label for="target_projek">Target Projek</label>
-                                            <input type="text" class="form-control" name="target_projek" id="target_projek" placeholder="Target Projek" value="<?php echo $target_projek; ?>" />
+                                            <input type="date" class="form-control" name="target_projek" id="target_projek" placeholder="Target Projek" value="<?php echo $target_projek; ?>" />
                                             <?php echo form_error('target_projek', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('nilai_pengajuan')) echo 'has-error'?> ">
