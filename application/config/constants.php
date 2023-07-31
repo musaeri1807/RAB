@@ -100,8 +100,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DATABASE', 'muse4184_rab');
 }
 
-//email
-define('SERVERMAIL', 'mail.bspid.id');
-define('EMAIL', 'no-replay@bspid.id');
-define('PASSMAIL', 'Y3t,?@$BgX5f');
-//email
+// //email
+// define('SERVERMAIL', 'mail.bspid.id');
+// define('EMAIL', 'no-replay@bspid.id');
+// define('PASSMAIL', 'Y3t,?@$BgX5f');
+// //email
