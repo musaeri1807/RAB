@@ -85,3 +85,23 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('NUMBER', 1);
+
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    // locahost
+    define('HOSTNAME', 'localhost');
+    define('USERNAME', 'root');
+    define('PASSWORD', '');
+    define('DATABASE', 'local_crudrab');
+} else {
+    // Online
+    define('HOSTNAME', 'localhost');
+    define('USERNAME', 'muse4184_rab');
+    define('PASSWORD', 'gxfbv8Pw0AT]');
+    define('DATABASE', 'muse4184_rab');
+}
+
+//email
+define('SERVERMAIL', 'mail.bspid.id');
+define('EMAIL', 'no-replay@bspid.id');
+define('PASSMAIL', 'Y3t,?@$BgX5f');
+//email
