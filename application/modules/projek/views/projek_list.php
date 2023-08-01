@@ -86,16 +86,22 @@ $access = $this->db->get('akses_role')->row_array();
                             <?php endif ?>
                             <td><?php echo $projek->nomor_projek ?></td>
                             <td><?php echo $projek->nama_projek ?></td>
-                            <td><?php echo $projek->proses_bisnis ?></td>
+                            <td><?php echo $projek->nama_jabatan ?></td>
                             <td><?php echo $projek->periode_projek ?></td>
                             <td><?php echo $projek->jenis_projek ?></td>
-                            <td><?php echo $projek->penguna_projek ?></td>
+                            <td><?php echo $projek->nama_user ?></td>
                             <td><?php echo $projek->tujuan_projek ?></td>
                             <td><?php echo $projek->tanggal_lpj ?></td>
                             <td><?php echo $projek->target_projek ?></td>
                             <td><?php echo number_format( $projek->nilai_pengajuan )?></td>
+                            <?php if ($projek->status=="P"){?>
                             
-                            <td><?php echo $projek->status ?></td><td>
+                                <td><a href="" class="btn btn-warning"></i>Pending</a></td>
+
+                            
+                            <?php } ?>
+                            <td>
+
                                         <a href="<?php echo site_url('projek/read/' . $projek->id_projek ) ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                         <?php if ($access['u']): ?>
                                         <a href="<?php echo site_url('projek/update/' . $projek->id_projek ) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>

@@ -123,6 +123,14 @@ function autoID($str, $table)
     $kode_baru = substr($kode, 3, 5) + 1;
     return $str . sprintf("%05s", $kode_baru);
 }
+function autoIDProjek($str, $table)
+{
+    // PLG00001
+    $ci = &get_instance();
+    $kode = $ci->db->query("SELECT MAX(nomor_" . $table . ") as kode from $table")->row()->kode;
+    $kode_baru = substr($kode, 3, 5) + 1;
+    return $str . sprintf("%05s", $kode_baru);
+}
 
 function acak($length)
 {

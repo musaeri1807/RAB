@@ -54,13 +54,15 @@ $this->db->select('*, ');
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_projek', $q);
-$this->db->select('*, ');
+    $this->db->select('*, ');
+    $this->db->join('jabatan','jabatan.id_jabatan=projek.proses_bisnis','left');
+    $this->db->join('user','user.id_user=projek.penguna_projek','left');
 	$this->db->or_like('nomor_projek', $q);
 	$this->db->or_like('nama_projek', $q);
 	$this->db->or_like('proses_bisnis', $q);
 	$this->db->or_like('periode_projek', $q);
 	$this->db->or_like('jenis_projek', $q);
-	$this->db->or_like('penguna_projek', $q);
+	$this->db->or_like('nama_user', $q);
 	$this->db->or_like('tujuan_projek', $q);
 	$this->db->or_like('tanggal_lpj', $q);
 	$this->db->or_like('target_projek', $q);

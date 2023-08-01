@@ -20,7 +20,16 @@
                         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
 	    <div class="form-group <?php if(form_error('nomor_projek')) echo 'has-error'?> ">
                                             <label for="nomor_projek">Nomor Projek</label>
-                                            <input type="text" class="form-control" name="nomor_projek" id="nomor_projek" placeholder="Nomor Projek" value="<?php echo $nomor_projek; ?>" />
+                                            <?php if ($action==site_url('projek/create_action')) {
+                                                echo "create_action";
+                                            ?>
+                                              <input readonly type="text" class="form-control" name="nomor_projek" id="nomor_projek" placeholder="Nomor Projek" value="<?php echo autoIDProjek('R', 'projek'); ?>" />
+                                            <?php
+                                            }else{
+                                                echo "update_action";
+                                            ?>
+                                            <input readonly type="text" class="form-control" name="nomor_projek" id="nomor_projek" placeholder="Nomor Projek" value="<?php echo $nomor_projek; ?>" />
+                                            <?php } ?>
                                             <?php echo form_error('nomor_projek', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('nama_projek')) echo 'has-error'?> ">
@@ -51,7 +60,7 @@
                                         </div>
 	    <div class="form-group <?php if(form_error('penguna_projek')) echo 'has-error'?> ">
                                             <!-- <label for="penguna_projek">Penguna Projek </label> -->
-                                            <input type="hidden" class="form-control" name="penguna_projek" id="penguna_projek" placeholder="Penguna Projek" value="<?php echo $this->session->userdata('login'); ?>" />
+                                            <input type="hidden" class="form-control" name="penguna_projek" id="penguna_projek" placeholder="Penguna Projek" value="<?php echo $this->session->userdata('id_user'); ?>" />
                                             <?php echo form_error('penguna_projek', '<small style="color:red">','</small>') ?>
                                         </div>
 	    <div class="form-group <?php if(form_error('tujuan_projek')) echo 'has-error'?> ">
@@ -71,8 +80,8 @@
                                         </div>
 	    <div class="form-group <?php if(form_error('nilai_pengajuan')) echo 'has-error'?> ">
                                             <label for="nilai_pengajuan">Nilai Pengajuan</label>
-                                            <input type="text" class="form-control" name="nilai_pengajuan" id="nilai_pengajuan" placeholder="Nilai Pengajuan" value="<?php echo $nilai_pengajuan; ?>" />
-                                            <?php echo form_error('nilai_pengajuan', '<small style="color:red">','</small>') ?>
+                                            <input type="hidden" class="form-control" name="nilai_pengajuan" id="nilai_pengajuan" placeholder="Nilai Pengajuan" value="0" />
+                                            <!-- <?php echo form_error('nilai_pengajuan', '<small style="color:red">','</small>') ?> -->
                                         </div>
 	    <div class="form-group <?php if(form_error('status')) echo 'has-error'?> ">
                                             <label for="status">Status</label>
