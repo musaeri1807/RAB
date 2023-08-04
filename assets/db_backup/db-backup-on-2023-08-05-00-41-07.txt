@@ -66,7 +66,7 @@ CREATE TABLE `backup` (
   `tgl` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `file` varchar(128) NOT NULL,
   PRIMARY KEY (`id_backup`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 #
 # TABLE STRUCTURE FOR: jabatan
@@ -161,13 +161,10 @@ CREATE TABLE `projek` (
   `nilai_pengajuan` int(11) DEFAULT NULL,
   `status` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_projek`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `projek` (`id_projek`, `nomor_projek`, `nama_projek`, `proses_bisnis`, `periode_projek`, `jenis_projek`, `penguna_projek`, `tujuan_projek`, `tanggal_lpj`, `target_projek`, `nilai_pengajuan`, `status`) VALUES (1, 'P00001', 'Payrol', '1', '2023-07-26', 'V', '2', 'Pengajian', '2023-08-26', 'D', 10000, 'Pending');
-INSERT INTO `projek` (`id_projek`, `nomor_projek`, `nama_projek`, `proses_bisnis`, `periode_projek`, `jenis_projek`, `penguna_projek`, `tujuan_projek`, `tanggal_lpj`, `target_projek`, `nilai_pengajuan`, `status`) VALUES (2, 'P00002', 'qwer', '3', '2023-08-10', 'wqeqw', 'qweqwe', 'qweqw', '2023-08-10', 'qweqwe', 1000000, 'P');
-INSERT INTO `projek` (`id_projek`, `nomor_projek`, `nama_projek`, `proses_bisnis`, `periode_projek`, `jenis_projek`, `penguna_projek`, `tujuan_projek`, `tanggal_lpj`, `target_projek`, `nilai_pengajuan`, `status`) VALUES (3, 'P00003', 'egwgagewgwg', 'Marketing', '2023-07-27', 'greg43g4', '3', 'dgsggahar', '2023-07-28', 'rehreherh', 2147483647, 'Y');
-INSERT INTO `projek` (`id_projek`, `nomor_projek`, `nama_projek`, `proses_bisnis`, `periode_projek`, `jenis_projek`, `penguna_projek`, `tujuan_projek`, `tanggal_lpj`, `target_projek`, `nilai_pengajuan`, `status`) VALUES (4, 'P00004', 'sdfwfe', 'Marketing', '2023-07-28', 'sfafd', 'sdafdsfa', 'dfdsafadfa', '2023-07-29', 'sfdsafdsad', 1212121212, 'sdfsdfdsf');
-INSERT INTO `projek` (`id_projek`, `nomor_projek`, `nama_projek`, `proses_bisnis`, `periode_projek`, `jenis_projek`, `penguna_projek`, `tujuan_projek`, `tanggal_lpj`, `target_projek`, `nilai_pengajuan`, `status`) VALUES (5, '2495852', 'sfsdndsf', 'sdfsdf', '0000-00-00', 'sdfds', 'sdfd', 'sdfdgg', '0000-00-00', 'dsfdsf', 2147483647, 'P');
+INSERT INTO `projek` (`id_projek`, `nomor_projek`, `nama_projek`, `proses_bisnis`, `periode_projek`, `jenis_projek`, `penguna_projek`, `tujuan_projek`, `tanggal_lpj`, `target_projek`, `nilai_pengajuan`, `status`) VALUES (1, 'R00001', 'PAY', '2', '2023-08-01', 'PAY', 'PTS00001', 'PAY', '2023-08-26', '2023-08-05', 0, 'P');
+INSERT INTO `projek` (`id_projek`, `nomor_projek`, `nama_projek`, `proses_bisnis`, `periode_projek`, `jenis_projek`, `penguna_projek`, `tujuan_projek`, `tanggal_lpj`, `target_projek`, `nilai_pengajuan`, `status`) VALUES (2, 'R00002', 'sdsas', '1', '2023-08-19', 'fsafs', 'PTS00001', 'asfsafsaf', '2023-08-16', '2023-08-18', 0, 'P');
 
 
 #
@@ -185,14 +182,7 @@ CREATE TABLE `projek_rincian` (
   `status` varchar(200) DEFAULT NULL,
   `persetujuan` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_rincian`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
-
-INSERT INTO `projek_rincian` (`id_rincian`, `id_projek`, `item`, `biaya`, `keterangan`, `status`, `persetujuan`) VALUES (1, '1', 'Thomas', '50000000', 'Gaji Bulan Agustus', 'P', 'DS');
-INSERT INTO `projek_rincian` (`id_rincian`, `id_projek`, `item`, `biaya`, `keterangan`, `status`, `persetujuan`) VALUES (2, '1', 'ayu', '50000000', 'Gaji Bulan Agustus', 'P', NULL);
-INSERT INTO `projek_rincian` (`id_rincian`, `id_projek`, `item`, `biaya`, `keterangan`, `status`, `persetujuan`) VALUES (3, '1', 'dsfsdf', '100000000', 'wewrrewr', 'P', NULL);
-INSERT INTO `projek_rincian` (`id_rincian`, `id_projek`, `item`, `biaya`, `keterangan`, `status`, `persetujuan`) VALUES (4, '1', 'wrwe', '1999199', 'sfdsfds', 'sdf', 'dsfsdfsdsf');
-INSERT INTO `projek_rincian` (`id_rincian`, `id_projek`, `item`, `biaya`, `keterangan`, `status`, `persetujuan`) VALUES (5, '2', 'afaoiaff asfnaof', '100000000', 'ssafasf', 'PD', 'S');
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 #
 # TABLE STRUCTURE FOR: role

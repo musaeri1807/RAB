@@ -94,10 +94,8 @@ $access = $this->db->get('akses_role')->row_array();
                             <td><?php echo $projek->tanggal_lpj ?></td>
                             <td><?php echo $projek->target_projek ?></td>
                             <td><?php echo number_format( $projek->nilai_pengajuan )?></td>
-                            <?php if ($projek->status=="P"){?>
-                            
+                            <?php if ($projek->status=="P"){?>                            
                                 <td><a href="" class="btn btn-warning"></i>Pending</a></td>
-
                             
                             <?php } ?>
                             <td>
